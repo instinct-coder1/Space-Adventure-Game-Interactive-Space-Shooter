@@ -1,0 +1,84 @@
+:root {
+  --bg: #070b1b; --panel: rgba(14, 22, 48, .78); --cyan: #5deaff;
+  --blue: #6288ff; --purple: #a47bff; --text: #f2f5ff; --muted: #8995b5;
+  --line: rgba(129, 160, 255, .18);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); }
+body { font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+button { font: inherit; }
+.ambient { position: fixed; border-radius: 50%; filter: blur(100px); opacity: .16; pointer-events: none; }
+.ambient-one { width: 360px; height: 360px; background: #355bff; top: -150px; left: -100px; }
+.ambient-two { width: 400px; height: 400px; background: #7d35ff; bottom: -230px; right: -100px; }
+.app-shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; position: relative; z-index: 1; }
+.topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.brand { color: white; text-decoration: none; font: 700 18px 'Orbitron', sans-serif; letter-spacing: 2px; display: flex; gap: 10px; align-items: center; }
+.brand-mark { color: var(--cyan); font-size: 26px; text-shadow: 0 0 16px var(--cyan); }
+.brand-light { color: var(--cyan); }
+.top-status, .eyebrow, .instruction-heading, .art-label, .hud-label, .game-bottom, .difficulty-wrap label, .welcome-footer { font: 600 10px 'Orbitron', sans-serif; letter-spacing: 1.7px; }
+.top-status { color: #a8b4d2; display: flex; align-items: center; gap: 9px; }
+.status-dot, .eyebrow span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #53edbb; box-shadow: 0 0 12px #53edbb; }
+.screen { min-height: calc(100vh - 83px); }
+.welcome-screen { display: grid; grid-template-columns: 1.02fr .98fr; grid-template-rows: 1fr auto auto; column-gap: 40px; padding: 54px 0 20px; }
+.hero-copy { align-self: center; padding: 10px 0 36px; }
+.eyebrow { color: var(--cyan); display: flex; align-items: center; gap: 10px; font-size: 9px; }
+.hero-copy h1 { font: 800 clamp(44px, 6vw, 76px)/.98 'Orbitron', sans-serif; letter-spacing: -3px; margin: 22px 0 14px; }
+.hero-copy h1 span { color: transparent; -webkit-text-stroke: 1px #7f9bff; text-shadow: 0 0 30px rgba(99, 135, 255, .16); }
+.hero-subtitle { color: #dfe6ff; font-size: 22px; font-weight: 600; margin: 20px 0 5px; }
+.hero-description { color: var(--muted); max-width: 420px; font-size: 17px; line-height: 1.5; margin: 0 0 27px; }
+.difficulty-wrap { margin-bottom: 22px; }
+.difficulty-wrap label { display: block; color: #8390b2; font-size: 9px; margin-bottom: 10px; }
+.difficulty-options { display: flex; gap: 8px; }
+.difficulty-btn { padding: 9px 16px; background: rgba(22, 32, 67, .55); border: 1px solid var(--line); color: #a6b1d0; font: 600 10px 'Orbitron', sans-serif; letter-spacing: 1px; cursor: pointer; transition: .2s; }
+.difficulty-btn.active, .difficulty-btn:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(47, 192, 220, .09); box-shadow: 0 0 18px rgba(93,234,255,.08); }
+.primary-btn { border: 0; background: linear-gradient(100deg, #58dff3, #8291ff); color: #071022; padding: 15px 20px; min-width: 220px; display: flex; justify-content: space-between; align-items: center; gap: 30px; font: 700 11px 'Orbitron', sans-serif; letter-spacing: 1.2px; cursor: pointer; box-shadow: 0 8px 30px rgba(71, 171, 255, .18); transition: transform .2s, box-shadow .2s; }
+.primary-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(71, 171, 255, .3); }
+.primary-btn b { font-size: 19px; }
+.hero-art { min-height: 420px; position: relative; display: grid; place-items: center; overflow: hidden; }
+.hero-art:before { content: ''; position: absolute; inset: 5% 2%; background-image: radial-gradient(#9bb4ff 1px, transparent 1px); background-size: 37px 37px; opacity: .23; mask-image: radial-gradient(ellipse, black, transparent 72%); }
+.orbit { position: absolute; width: 370px; height: 150px; border: 1px solid rgba(101, 184, 255, .32); border-radius: 50%; transform: rotate(-28deg); }
+.orbit-b { width: 440px; height: 205px; transform: rotate(38deg); border-color: rgba(162, 125, 255, .22); }
+.planet { width: 220px; height: 220px; border-radius: 50%; position: absolute; background: radial-gradient(circle at 32% 25%, #819bff, #364a9c 36%, #161c50 68%, #090d22); box-shadow: inset -22px -15px 35px #050817, 0 0 65px rgba(88, 125, 255, .28); }
+.planet:after { content: ''; position: absolute; inset: 25px -20px; border-top: 2px solid rgba(105, 232, 255, .35); border-radius: 50%; transform: rotate(-22deg); }
+.planet-glow { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: #4865ff; filter: blur(90px); opacity: .18; }
+.hero-ship { position: absolute; z-index: 2; width: 140px; height: 165px; transform: translate(30px, 40px) rotate(12deg); filter: drop-shadow(0 0 18px rgba(82, 226, 255, .6)); }
+.ship-core { position: absolute; left: 49px; top: 12px; width: 42px; height: 125px; background: linear-gradient(90deg,#6177c9,#e5f5ff 48%,#5a75ce); clip-path: polygon(50% 0,100% 72%,78% 100%,50% 88%,22% 100%,0 72%); }
+.ship-cockpit { position: absolute; left: 59px; top: 38px; width: 22px; height: 42px; border-radius: 50% 50% 35% 35%; background: linear-gradient(#a9faff,#3e83c5); box-shadow: 0 0 15px #55edff; }
+.ship-wing { position: absolute; top: 62px; width: 58px; height: 80px; background: linear-gradient(135deg,#9caeff,#354c9e); }
+.left-wing { left: 0; clip-path: polygon(100% 0,100% 100%,0 73%,30% 32%); }
+.right-wing { right: 0; clip-path: polygon(0 0,100% 32%,70% 73%,0 100%); }
+.ship-engine { position: absolute; left: 64px; top: 127px; width: 13px; height: 38px; background: linear-gradient(#a7faff,transparent); filter: blur(4px); }
+.art-label { position: absolute; color: #dce6ff; font-size: 9px; z-index: 3; }
+.art-label span { display: block; color: #7583a9; font: 500 9px 'Rajdhani', sans-serif; letter-spacing: 1.5px; margin-top: 4px; }
+.label-top { top: 38px; right: 25px; text-align: right; }.label-bottom { bottom: 38px; left: 20px; }
+.crosshair { position: absolute; color: var(--cyan); font: 20px monospace; opacity: .6; }.crosshair-one { top: 25%; left: 10%; }.crosshair-two { bottom: 20%; right: 12%; }
+.instructions { grid-column: 1 / -1; display: flex; align-items: center; gap: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; flex-wrap: wrap; }
+.instruction-heading { color: #d8e1ff; font-size: 9px; margin-right: auto; }.instruction-heading span { color: var(--cyan); }
+.control { display: flex; align-items: center; gap: 5px; color: #9ba8c9; font: 600 10px 'Orbitron', sans-serif; letter-spacing: .7px; }
+.control span { margin-left: 7px; }
+kbd { min-width: 23px; height: 23px; display: inline-grid; place-items: center; border: 1px solid #45547e; background: #111a35; color: #e7eeff; border-radius: 3px; font: 600 11px 'Rajdhani', sans-serif; }
+.space-key { min-width: 54px; font-size: 9px; }
+.welcome-footer { grid-column: 1/-1; display: flex; justify-content: space-between; color: #566282; font-size: 8px; padding-top: 17px; }
+.hidden { display: none !important; }
+.game-screen { padding: 36px 0 24px; max-width: 1000px; margin: auto; }
+.game-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.game-heading h2 { font: 700 25px 'Orbitron', sans-serif; margin: 8px 0 0; letter-spacing: 2px; }.game-heading h2 span { color: var(--cyan); }
+.icon-btn { background: transparent; color: var(--cyan); border: 1px solid var(--line); padding: 10px 14px; cursor: pointer; font: 700 13px 'Orbitron', sans-serif; }.icon-btn span { font-size: 9px; letter-spacing: 1px; margin-left: 7px; }
+.hud { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+.hud-card { background: var(--panel); border: 1px solid var(--line); padding: 11px 16px; display: flex; justify-content: space-between; align-items: center; }
+.hud-label { color: #7f8caf; font-size: 8px; }.hud-card strong { color: var(--cyan); font: 600 14px 'Orbitron', sans-serif; letter-spacing: 1px; }.lives-card strong { color: #ff718f; letter-spacing: 3px; }
+.game-frame { position: relative; border: 1px solid rgba(93,234,255,.32); box-shadow: 0 0 45px rgba(46, 92, 211, .13); background: #05091a; overflow: hidden; }
+canvas { width: 100%; height: auto; display: block; aspect-ratio: 5 / 3; }
+.canvas-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(4, 8, 23, .82); backdrop-filter: blur(7px); text-align: center; }
+.overlay-panel { padding: 25px; }.overlay-kicker { color: var(--cyan); font: 600 9px 'Orbitron', sans-serif; letter-spacing: 2px; }.overlay-panel h3 { font: 800 clamp(36px,6vw,58px)/1 'Orbitron',sans-serif; margin: 13px 0; }.overlay-panel h3 em { color: transparent; -webkit-text-stroke: 1px #9a7bff; font-style: normal; }.overlay-panel p { color: #aab5d2; font-size: 17px; margin-bottom: 22px; }.overlay-panel p strong { color: var(--cyan); }.overlay-panel .primary-btn { margin: auto; }
+.text-btn { border: 0; background: none; color: #9ba8c9; margin-top: 17px; font: 600 9px 'Orbitron',sans-serif; letter-spacing: 1px; cursor: pointer; }
+.game-bottom { display: flex; justify-content: space-between; color: #7482a6; font-size: 8px; padding: 13px 2px; }.game-bottom span:first-child { color: #53edbb; }.game-bottom .status-dot { width: 6px; height: 6px; margin-right: 6px; }
+@media (max-width: 760px) {
+  .app-shell { width: min(100% - 34px, 600px); }.topbar { height: 66px; }
+  .welcome-screen { display: flex; flex-direction: column; padding-top: 38px; }.hero-copy { padding-bottom: 0; }
+  .hero-art { min-height: 300px; order: 2; }.planet { width: 165px; height: 165px; }.orbit { width: 300px; height: 120px; }
+  .instructions { order: 3; gap: 15px; }.instruction-heading { width: 100%; }.welcome-footer { order: 4; gap: 12px; font-size: 7px; }
+  .game-screen { padding-top: 25px; }.hud-card { padding: 10px 8px; display: block; }.hud-card strong { display: block; margin-top: 7px; font-size: 11px; }.hud-label { font-size: 7px; }
+  .game-bottom { font-size: 7px; gap: 8px; }.game-bottom span:nth-child(2) { text-align: center; }
+}
+@media (max-width: 420px) { .hero-copy h1 { font-size: 43px; }.hero-description { font-size: 15px; }.difficulty-btn { padding: 9px 11px; }.instructions { gap: 12px; }.control { font-size: 8px; }.game-bottom span:nth-child(2) { display: none; } }
